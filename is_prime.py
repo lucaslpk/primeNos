@@ -25,20 +25,26 @@ def is_prime2(num):             #second version -> each time it checks it reduce
 
 def are_primes(ran) :            
     primes_list = [2] 
+    max = ran
     i = 3
-    for i in range(i, ran) :
+    while i < ran :
         isprime = False
         for j in primes_list :
+            if j > max :
+                break
             if i % j == 0 :
                 isprime = False
                 break
             else :
                 isprime = True
+            max = ran//j + 1
 
         if isprime :
             primes_list.append(i)
 
-    primes_list.insert(0, 1)    # 1 needs to be added to the list of primes at the end, otherwise every number % 1 == 0 and 
+        i += 1       
+
+    primes_list.insert(0, 1)    # 1 needs to be added to the list of primes at the end, otherwise every number % 1 == 0 
     return primes_list
 
 def compareAndPrint(ran) :   #compares and outputs all prime numbers found by both functions
@@ -90,6 +96,6 @@ def compare_time(ran) :      #this function will compare how much time each func
 # TESTING: uncomment relevant line depending on what you wnat to test
 #are_primes(5)
 #print(are_primes(10))
-#compareAndPrint(200)
-compareSum(100000)
-compare_time(100000)
+compareAndPrint(200)
+compareSum(10000)
+compare_time(50000)
